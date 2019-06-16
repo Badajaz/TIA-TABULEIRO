@@ -12,7 +12,7 @@
   <script src="topcodes.js"></script>
   
   <p id="demo"></p>
-  <p id="demo2"></p>
+ 
 
   <script>
 
@@ -21,46 +21,49 @@
 	//console.log(json);
 	var arrayTopcodes = json.topcodes;
 	drawCodes(json.topcodes);
-	document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
 		var dimensoes = [];
 		var direcoes = [];
+		
+		if(item.code == 157 ){
+			dimensoes += [item.code,item.x,item.y,"inf-esq"];
+			direcoes+=["inf-esq"]
+		 }
+		 
+		 if(item.code == 31 ){
+			dimensoes += [item.code,item.x,item.y,"sup-esq"];
+			direcoes+=["sup-esq"]
+		 }
+		 
+		 if(item.code == 205 ){
+			dimensoes += [item.code,item.x,item.y,"sup-dir"];
+			direcoes+=["sup-dir"]
+		 }
+		 
+		 if(item.code == 103 ){
+			dimensoes += [item.code,item.x,item.y,"inf-dir"];
+			direcoes+=["inf-dir"]
+		 }
+		 
 		 
  		 if(item.code == 47 ){
-			dimensoes += [item.code,item.x,item.y];
+			dimensoes += [item.code,item.x,item.y,"cima"];
 			direcoes+=["cima"]
 		 }
 		 
 		 if(item.code == 107){
-			dimensoes = [item.code,item.x,item.y];
+			dimensoes = [item.code,item.x,item.y,"direita"];
 			direcoes+=["direita"]
 		 }	
 		 
-		/*var x31 = dimensoes31[1];
-		var x205 = dimensoes205[1];
-		console.log("X 31  = "+ x31);
-		console.log("X 205= "+ x205);*/
-
-		return direcoes;
-	});
-/*	
-	var dim = arrayTopcodes.map(function(item) {
-		 var dimensoes31 = {};
-		 var dimensoes205 = {};
 		 
- 		 if(item.code == 31){
-			dimensoes31 ={item.code,item.x,item.y};
-		}
-		
-		if(| item.code == 205){
-			dimensoes205 ={item.code,item.x,item.y};
-		}
-		
-		return dimensoes31[1]-dimensoes205[1];
-	});*/
+
+
+		return dimensoes;
+	});
+
 	
 	document.getElementById("demo").innerHTML =  codes;
-	//document.getElementById("demo2").innerHTML =  dim;
 	
 	
 	
