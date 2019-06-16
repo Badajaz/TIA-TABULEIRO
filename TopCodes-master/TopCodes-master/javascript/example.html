@@ -41,7 +41,7 @@
 		return dimensoes;
 	});
 
-	var codes = arrayTopcodes.map(function(item) {
+	var dim = arrayTopcodes.map(function(item) {
 		 var dimensoes = [];
 		 
  		 if(item.code == 31 || item.code == 205){
@@ -63,6 +63,7 @@
 	});
 	
 	document.getElementById("demo").innerHTML =  codes;
+	document.getElementById("demo2").innerHTML =  dim;
 	
 	
 	
