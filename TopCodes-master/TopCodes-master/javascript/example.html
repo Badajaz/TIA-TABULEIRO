@@ -27,7 +27,7 @@
 		 
  		 if(item.code == 31 || item.code == 205){
 			dimensoes+=item.code+ "  ,  "+ item.x +"   ,   "+ item.y + "\n";
-		 
+			
 		}
 		 
 		 /*
@@ -40,9 +40,27 @@
 		 }*/
 		return dimensoes;
 	});
-    console.log(codes);
 
-	
+	var codes = arrayTopcodes.map(function(item) {
+		 var dimensoes = [];
+		 
+ 		 if(item.code == 31 || item.code == 205){
+			dimensoes+=[item.code,item.x,item.y];
+		}
+		
+		
+		 
+		 /*
+		 else if(item.code == 103){
+			tabuleiro+="esquerda ";
+		 }else if(item.code == 205){
+			tabuleiro+="frente ";
+		 }else{
+			tabuleiro+="trás ";
+		 }*/
+		 //valor do x
+		return dimensoes[0][1]-dimensoes[1][0];
+	});
 	
 	document.getElementById("demo").innerHTML =  codes;
 	
