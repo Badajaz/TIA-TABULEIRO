@@ -25,7 +25,11 @@
 	var codes = arrayTopcodes.map(function(item) {
 		 var dimensoes = [];
 		 
- 		 if(item.code == 31 || item.code == 205){
+ 		 if(item.code == 31){
+			dimensoes+=[item.code,item.x,item.y];
+		}
+		
+		if(item.code ==205){
 			dimensoes+=[item.code,item.x,item.y];
 		 
 		}
