@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <canvas id="video-canvas" width="1200" height="600" style="background: #ddd;"></canvas>
+  <canvas id="video-canvas" width="1200" height="500" style="background: #ddd;"></canvas>
   <br/>
   <button id="camera-button" onclick="TopCodes.startStopVideoScan('video-canvas')">Start / Stop</button>
 
@@ -25,9 +25,10 @@
 	var codes = arrayTopcodes.map(function(item) {
 		 var dimensoes = [];
 		 
- 		 if(item.code == 31){
+ 		 if(item.code == 31 || item.code == 205){
 			dimensoes+=[item.code,item.x,item.y];
-		 }
+		 
+		}
 		 
 		 /*
 		 else if(item.code == 103){
@@ -37,10 +38,6 @@
 		 }else{
 			tabuleiro+="trás ";
 		 }*/
-		var tab = "";
-		if(dimensoes.length == 4 ){
-			console.log("tem 4")
-		}
 		return dimensoes;
 	});
     console.log(codes);
