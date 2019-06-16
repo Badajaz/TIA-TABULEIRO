@@ -23,23 +23,25 @@
 	drawCodes(json.topcodes);
 	document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
-		var dimensoes31 = [];
-		var dimensoes205 = [];
+		var dimensoes = [];
+		var direcoes = [];
 		 
- 		 if(item.code == 31 ){
-			dimensoes31 = [item.code,item.x,item.y];
+ 		 if(item.code == 47 ){
+			dimensoes += [item.code,item.x,item.y];
+			direcoes+=["cima"]
 		 }
 		 
-		 if(item.code == 205){
-			dimensoes205 = [item.code,item.x,item.y];
+		 if(item.code == 107){
+			dimensoes = [item.code,item.x,item.y];
+			direcoes+=["direita"]
 		 }	
 		 
-		var x31 = dimensoes31[1];
+		/*var x31 = dimensoes31[1];
 		var x205 = dimensoes205[1];
 		console.log("X 31  = "+ x31);
-		console.log("X 205= "+ x205);
+		console.log("X 205= "+ x205);*/
 
-		return dimensoes31.concat(dimensoes205);
+		return direcoes;
 	});
 /*	
 	var dim = arrayTopcodes.map(function(item) {
