@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TopCodes Example</title>
+</head>
+
+<body>
+  <canvas id="video-canvas" width="1200" height="600" style="background: #ddd;"></canvas>
+  <br/>
+  <button id="camera-button" onclick="TopCodes.startStopVideoScan('video-canvas')">Start / Stop</button>
+
+  <script src="topcodes.js"></script>
+  
+  <p id="demo"></p>
+  <p id="demo2"></p>
+
+  <script>
+
+  TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
+    var json = JSON.parse(jsonString);
+	//console.log(json);
+	var arrayTopcodes = json.topcodes;
+	drawCodes(json.topcodes);
+	document.getElementById("demo2").innerHTML =  jsonString;
+	var codes = arrayTopcodes.map(function(item) {
+		 var dimensoes = [];
+		 
+ 		 if(item.code == 31){
+			dimensoes+=[item.code,item.x,item.y];
+		 }
+		 
+		 /*
+		 else if(item.code == 103){
+			tabuleiro+="esquerda ";
+		 }else if(item.code == 205){
+			tabuleiro+="frente ";
+		 }else{
+			tabuleiro+="trás ";
+		 }*/
+		var tab = "";
+		if(dimensoes.length == 4 ){
+			console.log("tem 4")
+		}
+		return dimensoes;
+	});
+    console.log(codes);
+
+	
+	
+	document.getElementById("demo").innerHTML =  codes;
+	
+	
+	
+
+	
+});
+
+
+  function drawCodes(topcodes) {
+    var ctx = document.querySelector("#video-canvas").getContext('2d');
+    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
+    for (i=0; i<topcodes.length; i++) {
+      ctx.beginPath();
+      ctx.arc(topcodes[i].x, topcodes[i].y, topcodes[i].radius, 0, Math.PI*2, true);
+      ctx.fill();
+    }
+  }
+
+  </script>
+</body>
+</html>
