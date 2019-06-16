@@ -21,7 +21,7 @@
 	//console.log(json);
 	var arrayTopcodes = json.topcodes;
 	drawCodes(json.topcodes);
-	//document.getElementById("demo2").innerHTML =  jsonString;
+	document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
 		var dimensoes31 = [];
 		var dimensoes205 = [];
@@ -34,11 +34,10 @@
 			dimensoes205 = [item.code,item.x,item.y];
 		 }	
 		 
-		var x = Number(dimensoes31[1])-Number(dimensoes205[1]); 
-		var y = Number(dimensoes31[2])-Number(dimensoes205[2]); 
+		var x = dimensoes31[0];
 
 		console.log("X = "+ x);
-		console.log("Y = "+ y);
+		//console.log("Y = "+ y);
 
 		return dimensoes31.concat(dimensoes205);
 	});
@@ -59,7 +58,7 @@
 	});*/
 	
 	document.getElementById("demo").innerHTML =  codes;
-	//zdocument.getElementById("demo2").innerHTML =  dim;
+	//document.getElementById("demo2").innerHTML =  dim;
 	
 	
 	
