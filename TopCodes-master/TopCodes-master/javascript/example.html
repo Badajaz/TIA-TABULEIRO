@@ -23,16 +23,17 @@
 	drawCodes(json.topcodes);
 	document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
-		var dimensoes = [];
+		var dimensoes31 = [];
+		var dimensoes205 = [];
 		 
  		 if(item.code == 31 ){
-			dimensoes31 = [item.code,item.x,item.y];
+			dimensoes31 += [item.code,item.x,item.y];
 		 }
 		 
 		 if(item.code== 205){
-			dimensoes205 = [item.code,item.x,item.y];
+			dimensoes205 += [item.code,item.x,item.y];
 		 }	
-		return [dimensoes31[1]-dimensoes205[1],dimensoes31[2]-dimensoes205[2]]
+		return dimensoes31.concat(dimensoes205);
 	});
 /*	
 	var dim = arrayTopcodes.map(function(item) {
@@ -50,7 +51,7 @@
 		return dimensoes31[1]-dimensoes205[1];
 	});*/
 	
-	document.getElementById("demo").innerHTML =  codes[0];
+	document.getElementById("demo").innerHTML =  codes[1];
 	//zdocument.getElementById("demo2").innerHTML =  dim;
 	
 	
