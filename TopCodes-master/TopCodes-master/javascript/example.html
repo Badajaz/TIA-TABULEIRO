@@ -23,47 +23,34 @@
 	drawCodes(json.topcodes);
 	document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
-		 var dimensoes = "";
-		 
- 		 if(item.code == 31 || item.code == 205){
-			dimensoes+=item.code+ "  ,  "+ item.x +"   ,   "+ item.y + "\n";
-			
-		}
-		 
-		 /*
-		 else if(item.code == 103){
-			tabuleiro+="esquerda ";
-		 }else if(item.code == 205){
-			tabuleiro+="frente ";
-		 }else{
-			tabuleiro+="trás ";
-		 }*/
-		return dimensoes;
-	});
-
-	var dim = arrayTopcodes.map(function(item) {
-		 var dimensoes = [];
+		var dimensoes = [];
 		 
  		 if(item.code == 31 || item.code == 205){
 			dimensoes+=[item.code,item.x,item.y];
+		 }
+		 console.log(dimensoes[0]-dimensoes[3]);
+		 
+		
+		return dimensoes[0]-dimensoes[3];
+	});
+/*
+	var dim = arrayTopcodes.map(function(item) {
+		 var dimensoes31 = {};
+		 var dimensoes205 = {};
+		 
+ 		 if(item.code == 31){
+			dimensoes31 ={item.code,item.x,item.y};
 		}
 		
+		if(| item.code == 205){
+			dimensoes205 ={item.code,item.x,item.y};
+		}
 		
-		 
-		 /*
-		 else if(item.code == 103){
-			tabuleiro+="esquerda ";
-		 }else if(item.code == 205){
-			tabuleiro+="frente ";
-		 }else{
-			tabuleiro+="trás ";
-		 }*/
-		 //valor do x
-		return dimensoes[0][1]-dimensoes[1][0];
-	});
+		return dimensoes31[1]-dimensoes205[1];
+	});*/
 	
 	document.getElementById("demo").innerHTML =  codes;
-	document.getElementById("demo2").innerHTML =  dim;
+	//zdocument.getElementById("demo2").innerHTML =  dim;
 	
 	
 	
