@@ -21,17 +21,17 @@
 	//console.log(json);
 	var arrayTopcodes = json.topcodes;
 	drawCodes(json.topcodes);
-	document.getElementById("demo2").innerHTML =  jsonString;
+	//document.getElementById("demo2").innerHTML =  jsonString;
 	var codes = arrayTopcodes.map(function(item) {
 		var dimensoes31 = [];
 		var dimensoes205 = [];
 		 
  		 if(item.code == 31 ){
-			dimensoes31 += [item.code,item.x,item.y];
+			dimensoes31 = [item.code,item.x,item.y,"adeus"];
 		 }
 		 
 		 if(item.code== 205){
-			dimensoes205 += [item.code,item.x,item.y];
+			dimensoes205 = [item.code,item.x,item.y,"ola"];
 		 }	
 		return dimensoes31.concat(dimensoes205);
 	});
@@ -51,7 +51,7 @@
 		return dimensoes31[1]-dimensoes205[1];
 	});*/
 	
-	document.getElementById("demo").innerHTML =  codes[0][1];
+	document.getElementById("demo").innerHTML =  codes;
 	//zdocument.getElementById("demo2").innerHTML =  dim;
 	
 	
