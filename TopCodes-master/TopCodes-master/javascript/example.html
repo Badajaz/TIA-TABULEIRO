@@ -13,7 +13,6 @@
   
   <p id="demo"></p>
  
-
   <script>
 
   TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
@@ -36,7 +35,7 @@
 		 }
 		 
 		 if(item.code == 205 ){
-			dimensoes += [item.code,item.x,item.y,"sup-dir"];
+			dimensoes += [item.code,item.x,item.y,"sup-dir"];       
 			direcoes+=["sup-dir"]
 		 }
 		 
@@ -52,22 +51,20 @@
 		 }
 		 
 		 if(item.code == 107){
-			dimensoes = [item.code,item.x,item.y,"direita"];
+			dimensoes += [item.code,item.x,item.y,"direita"];
 			direcoes+=["direita"]
 		 }	
 		 
-		 
-
 
 		return dimensoes;
 	});
-
-	
 	document.getElementById("demo").innerHTML =  codes;
+	 for ( var i=0; i<codes.length; i++) {
+		console.log(codes[i]);
+		
+	 }
 	
-	
-	
-
+		
 	
 });
 
@@ -75,7 +72,7 @@
   function drawCodes(topcodes) {
     var ctx = document.querySelector("#video-canvas").getContext('2d');
     ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
-    for (i=0; i<topcodes.length; i++) {
+    for (var 	i=0; i<topcodes.length; i++) {
       ctx.beginPath();
       ctx.arc(topcodes[i].x, topcodes[i].y, topcodes[i].radius, 0, Math.PI*2, true);
       ctx.fill();
