@@ -25,15 +25,16 @@
 	var codes = arrayTopcodes.map(function(item) {
 		var dimensoes = [];
 		 
- 		 if(item.code == 31 || item.code == 205){
-			dimensoes+=[item.code,item.x,item.y];
+ 		 if(item.code == 31 ){
+			dimensoes31 = [item.code,item.x,item.y];
 		 }
-		
 		 
-		
-		return dimensoes[1]-dimensoes[4];
+		 if(item.code== 205){
+			dimensoes205 = [item.code,item.x,item.y];
+		 }	
+		return [dimensoes31[1]-dimensoes205[1],dimensoes31[2]-dimensoes205[2]]
 	});
-/*
+/*	
 	var dim = arrayTopcodes.map(function(item) {
 		 var dimensoes31 = {};
 		 var dimensoes205 = {};
@@ -49,7 +50,7 @@
 		return dimensoes31[1]-dimensoes205[1];
 	});*/
 	
-	document.getElementById("demo").innerHTML =  codes;
+	document.getElementById("demo").innerHTML =  codes[0];
 	//zdocument.getElementById("demo2").innerHTML =  dim;
 	
 	
