@@ -27,15 +27,15 @@
 		var dimensoes205 = [];
 		 
  		 if(item.code == 31 ){
-			dimensoes31 = [item.code,item.x,item.y,"adeus"];
+			dimensoes31 = [item.code,item.x,item.y];
 		 }
 		 
-		 if(item.code== 205){
-			dimensoes205 = [item.code,item.x,item.y,"ola"];
+		 if(item.code == 205){
+			dimensoes205 = [item.code,item.x,item.y];
 		 }	
 		 
-		var x = dimensoes31[1]-dimensoes205[1]; 
-		var y = dimensoes31[2]-dimensoes205[2]; 
+		var x = Number(dimensoes31[1])-Number(dimensoes205[1]); 
+		var y = Number(dimensoes31[2])-Number(dimensoes205[2]); 
 
 		console.log("X = "+ x);
 		console.log("Y = "+ y);
