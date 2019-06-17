@@ -11,9 +11,17 @@
 
   <script src="topcodes.js"></script>
   
+
   <p id="demo"></p>
-  <p id="demo2"></p>
-  <p id="demo3"></p>
+  
+<form>
+ path:<br>
+  <input id = "path" type="text" name="firstname" width= "500">
+</form>
+
+<button id="pathButton" onclick = "getPathValues()">submit path</button>
+
+
  
   <script>
 
@@ -21,91 +29,107 @@
     var json = JSON.parse(jsonString);
 	var arrayTopcodes = json.topcodes;
 	drawCodes(json.topcodes);
-	var codes = arrayTopcodes.map(function(item) {
-		var dimensoes = [];
-		var direcoes = [];
-		var array = [];
+	var tab = arrayTopcodes.map(function(item) {
+		var tabuleiro = [];
+		
 			
 		if(item.code == 157 ){
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("inf-esq");
-			dimensoes += [item.code,item.x,item.y,"inf-esq"];
-			direcoes+=["inf-esq"]
-		 }
+			
+			tabuleiro =  [["X", "S", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X", "X", "X", "X", "X", "X"],
+						  ["X", "O", "O", "O", "O", "O", "O", "X"],
+						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+		}
 		 
 		 if(item.code == 31 ){
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("sup-esq");
-			dimensoes += [item.code,item.x,item.y,"sup-esq"];
-			direcoes+=["sup-esq"];
-		 }
+					
+			tabuleiro =  [["X", "S", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X", "X", "X", "X", "X", "X"],
+						  ["X", "O", "O", "O", "O", "O", "O", "X"],
+						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+		}
+		 
+
+		 
 		 
 		 if(item.code == 205 ){
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("sup-dir");
-			dimensoes += [item.code,item.x,item.y,"sup-dir"];       
-			direcoes+=["sup-dir"];
+					
+			tabuleiro =  [["X", "S", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X", "X", "X", "X", "X", "X"],
+						  ["X", "O", "O", "O", "O", "O", "O", "X"],
+						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+		
+		 
+		
 		 }
 		 
 		 if(item.code == 103 ){
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("inf-dir");
-			dimensoes += [item.code,item.x,item.y,"inf-dir"];
-			direcoes+=["inf-dir"]
+					
+			tabuleiro =  [["X", "S", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X" ],
+						  ["X", "O", "X", "X", "X", "X", "X", "X"],
+						  ["X", "O", "O", "O", "O", "O", "O", "X"],
+						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+		
+		 
+		 
 		 }
-		 
-		 
- 		 if(item.code == 47 ){
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("cima");
-			dimensoes += [item.code,item.x,item.y,"cima"];
-			direcoes+=["cima"];
-		 }
-		 
-		 if(item.code == 107){
-		 
-			array.push(item.code);
-			array.push(item.x);
-			array.push(item.y);
-			array.push("direita");
-			dimensoes += [item.code,item.x,item.y,"direita"];
-			direcoes+=["direita"];
-		 }	
 		 
 
-		return array;
+
+		return tabuleiro;
 	});
 	
-	var flatArray = codes.reduce((acc, val) => acc.concat(val), []);
+
 	
-	document.getElementById("demo").innerHTML =  flatArray;
-	document.getElementById("demo2").innerHTML =  flatArray.length;
-	document.getElementById("demo3").innerHTML =  getInfEsqCoordinates(flatArray);
+	document.getElementById("demo").innerHTML = tab[0] ;
 	
-	
-	
+	if(getPathValues() == "aaa"){
+		
+	}
 	
 });
+
+
+  function getPathValues(){
+	var formElements = document.getElementById("path").value;
+	var res = formElements.split(",");
+	return res;
+  }
+
 
 
   function drawCodes(topcodes) {
     var ctx = document.querySelector("#video-canvas").getContext('2d');
     ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
-    for (var 	i=0; i<topcodes.length; i++) {
+    for (var i=0; i<topcodes.length; i++) {
       ctx.beginPath();
       ctx.arc(topcodes[i].x, topcodes[i].y, topcodes[i].radius, 0, Math.PI*2, true);
       ctx.fill();
     }
+  }
+  
+  
+  function getpathCoordinates(flatArray){
+	var path = [];
+	for (var i = 0; i < flatArray.length; i+=4) {
+		
+		if(flatArray[i] != 157 && flatArray[i] != 31 && flatArray[i] != 205 && flatArray[i] != 103){
+			path.push(flatArray[i+1]);
+			path.push(flatArray[i+2]);
+			path.push(flatArray[i+3]);
+		}
+	}
+
+		
+	return path;
   }
   
   
@@ -124,11 +148,11 @@
   }
   
   
-    function getSupEsqCoordinates(flatArray){
+  function getSupEsqCoordinates(flatArray){
 	var supesq = [];
 	for (var i = 0; i < flatArray.length; i+=4) {
 		
-		if(flatArray[i] == 157){
+		if(flatArray[i] == 31){
 			supesq.push(flatArray[i+1]);
 			supesq.push(flatArray[i+2]);
 		}
@@ -139,7 +163,7 @@
   }
   
   
-    function getInfDirCoordinates(flatArray){
+  function getInfDirCoordinates(flatArray){
 	var infdir = [];
 	for (var i = 0; i < flatArray.length; i+=4) {
 		
@@ -154,7 +178,7 @@
   }
   
   
-    function getSupDirCoordinates(flatArray){
+  function getSupDirCoordinates(flatArray){
 	var supdir = [];
 	for (var i = 0; i < flatArray.length; i+=4) {
 		
