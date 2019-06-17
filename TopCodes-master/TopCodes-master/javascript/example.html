@@ -12,6 +12,7 @@
   <script src="topcodes.js"></script>
   
   <p id="demo"></p>
+  <p id="demo2"></p>
  
   <script>
 
@@ -23,48 +24,48 @@
 	var codes = arrayTopcodes.map(function(item) {
 		var dimensoes = [];
 		var direcoes = [];
-		
+		var array = [];
+			
 		if(item.code == 157 ){
-			dimensoes += [item.code,item.x,item.y,"inf-esq"];
+			dimensoes.concat([item.code,item.x,item.y,"inf-esq"]);
 			direcoes+=["inf-esq"]
 		 }
 		 
 		 if(item.code == 31 ){
-			dimensoes += [item.code,item.x,item.y,"sup-esq"];
-			direcoes+=["sup-esq"]
+			dimensoes.concat([item.code,item.x,item.y,"sup-esq"]);
+			direcoes+=["sup-esq"];
 		 }
 		 
 		 if(item.code == 205 ){
-			dimensoes += [item.code,item.x,item.y,"sup-dir"];       
-			direcoes+=["sup-dir"]
+			dimensoes.concat([item.code,item.x,item.y,"sup-dir"]);       
+			direcoes+=["sup-dir"];
 		 }
 		 
 		 if(item.code == 103 ){
-			dimensoes += [item.code,item.x,item.y,"inf-dir"];
+			dimensoes.concat([item.code,item.x,item.y,"inf-dir"]);
 			direcoes+=["inf-dir"]
 		 }
 		 
 		 
  		 if(item.code == 47 ){
-			dimensoes += [item.code,item.x,item.y,"cima"];
-			direcoes+=["cima"]
+			dimensoes.concat([item.code,item.x,item.y,"cima"]);
+			direcoes+=["cima"];
 		 }
 		 
 		 if(item.code == 107){
-			dimensoes += [item.code,item.x,item.y,"direita"];
-			direcoes+=["direita"]
+		 
+			dimensoes.concat([item.code,item.x,item.y,"direita"]);
+			direcoes+=["direita"];
 		 }	
 		 
 
 		return dimensoes;
 	});
-	document.getElementById("demo").innerHTML =  codes;
-	 for ( var i=0; i<codes.length; i++) {
-		console.log(codes[i]);
-		
-	 }
 	
-		
+	
+	
+	document.getElementById("demo").innerHTML =  codes;
+	document.getElementById("demo2").innerHTML =  codes.length;
 	
 });
 
