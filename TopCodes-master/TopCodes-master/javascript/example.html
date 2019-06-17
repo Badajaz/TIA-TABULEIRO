@@ -27,41 +27,64 @@
 		var array = [];
 			
 		if(item.code == 157 ){
-			dimensoes.concat([item.code,item.x,item.y,"inf-esq"]);
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("inf-esq");
+			dimensoes += [item.code,item.x,item.y,"inf-esq"];
 			direcoes+=["inf-esq"]
 		 }
 		 
 		 if(item.code == 31 ){
-			dimensoes.concat([item.code,item.x,item.y,"sup-esq"]);
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("sup-esq");
+			dimensoes += [item.code,item.x,item.y,"sup-esq"];
 			direcoes+=["sup-esq"];
 		 }
 		 
 		 if(item.code == 205 ){
-			dimensoes.concat([item.code,item.x,item.y,"sup-dir"]);       
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("sup-dir");
+			dimensoes += [item.code,item.x,item.y,"sup-dir"];       
 			direcoes+=["sup-dir"];
 		 }
 		 
 		 if(item.code == 103 ){
-			dimensoes.concat([item.code,item.x,item.y,"inf-dir"]);
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("inf-dir");
+			dimensoes += [item.code,item.x,item.y,"inf-dir"];
 			direcoes+=["inf-dir"]
 		 }
 		 
 		 
  		 if(item.code == 47 ){
-			dimensoes.concat([item.code,item.x,item.y,"cima"]);
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("cima");
+			dimensoes += [item.code,item.x,item.y,"cima"];
 			direcoes+=["cima"];
 		 }
 		 
 		 if(item.code == 107){
 		 
-			dimensoes.concat([item.code,item.x,item.y,"direita"]);
+			array.push(item.code);
+			array.push(item.x);
+			array.push(item.y);
+			array.push("direita");
+			dimensoes += [item.code,item.x,item.y,"direita"];
 			direcoes+=["direita"];
 		 }	
 		 
 
-		return dimensoes;
+		return array;
 	});
-	
 	
 	
 	document.getElementById("demo").innerHTML =  codes;
