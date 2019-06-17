@@ -18,7 +18,6 @@
 
   TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
     var json = JSON.parse(jsonString);
-	//console.log(json);
 	var arrayTopcodes = json.topcodes;
 	drawCodes(json.topcodes);
 	var codes = arrayTopcodes.map(function(item) {
@@ -86,10 +85,10 @@
 		return array;
 	});
 	
+	var fin = codes.reduce((acc, val) => acc.concat(val), []);
 	
-	
-	document.getElementById("demo").innerHTML =  codes;
-	document.getElementById("demo2").innerHTML =  codes.length;
+	document.getElementById("demo").innerHTML =  fin[0];
+	document.getElementById("demo2").innerHTML =  fin.length;
 	
 });
 
@@ -103,6 +102,10 @@
       ctx.fill();
     }
   }
+  
+  
+  
+
 
   </script>
 </body>
