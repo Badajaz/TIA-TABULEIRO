@@ -13,6 +13,7 @@
   
   <p id="demo"></p>
   <p id="demo2"></p>
+  <p id="demo3"></p>
  
   <script>
 
@@ -85,10 +86,14 @@
 		return array;
 	});
 	
-	var fin = codes.reduce((acc, val) => acc.concat(val), []);
+	var flatArray = codes.reduce((acc, val) => acc.concat(val), []);
 	
-	document.getElementById("demo").innerHTML =  fin[0];
-	document.getElementById("demo2").innerHTML =  fin.length;
+	document.getElementById("demo").innerHTML =  flatArray;
+	document.getElementById("demo2").innerHTML =  flatArray.length;
+	document.getElementById("demo3").innerHTML =  getInfEsqCoordinates(flatArray);
+	
+	
+	
 	
 });
 
@@ -104,7 +109,64 @@
   }
   
   
+  function getInfEsqCoordinates(flatArray){
+	var infesq = [];
+	for (var i = 0; i < flatArray.length; i+=4) {
+		
+		if(flatArray[i] == 157){
+			infesq.push(flatArray[i+1]);
+			infesq.push(flatArray[i+2]);
+		}
+	}
+
+		
+	return infesq;
+  }
   
+  
+    function getSupEsqCoordinates(flatArray){
+	var supesq = [];
+	for (var i = 0; i < flatArray.length; i+=4) {
+		
+		if(flatArray[i] == 157){
+			supesq.push(flatArray[i+1]);
+			supesq.push(flatArray[i+2]);
+		}
+	}
+
+		
+	return supesq;
+  }
+  
+  
+    function getInfDirCoordinates(flatArray){
+	var infdir = [];
+	for (var i = 0; i < flatArray.length; i+=4) {
+		
+		if(flatArray[i] == 103){
+			infdir.push(flatArray[i+1]);
+			infdir.push(flatArray[i+2]);
+		}
+	}
+
+		
+	return infdir;
+  }
+  
+  
+    function getSupDirCoordinates(flatArray){
+	var supdir = [];
+	for (var i = 0; i < flatArray.length; i+=4) {
+		
+		if(flatArray[i] == 205){
+			supdir.push(flatArray[i+1]);
+			supdir.push(flatArray[i+2]);
+		}
+	}
+
+		
+	return supdir;
+  }
 
 
   </script>
