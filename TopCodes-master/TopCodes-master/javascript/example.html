@@ -14,6 +14,8 @@
 
   <p id="demo"></p>
   
+  <p id="teste"></p>
+  
 <form>
  path:<br>
   <input id = "path" type="text" name="firstname" width= "500">
@@ -51,6 +53,16 @@
 						  ["X", "O", "X", "X", "X", "X", "X", "X"],
 						  ["X", "O", "O", "O", "O", "O", "O", "X"],
 						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+						  
+						  
+						  
+						  
+		var startCoordenates = getStartCoordenates(tabuleiro);
+		document.getElementById("teste").innerHTML = showFinalResult(getPathValues(),startCoordenates,tabuleiro);
+		
+			
+			
+			
 		}
 		 
 
@@ -87,14 +99,12 @@
 		return tabuleiro;
 	});
 	
-
+	
 	
 	document.getElementById("demo").innerHTML = tab[0] ;
 	
-	if(getPathValues() == "aaa"){
-		
-	}
 	
+ 	
 });
 
 
@@ -104,6 +114,127 @@
 	return res;
   }
 
+  function showFinalResult(path,startCoordenates,tabuleiro){
+	
+	var finalCoordenates = startCoordenates;
+	var result = "";
+	for(var i = 0;i < path.length;i++){
+	
+		if( path[i] === "frente"){
+			finalCoordenates[1] += 1; 
+			
+		if(tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "X"){
+			result = "bateu na parede";
+			alert("bateu na parede");
+		
+			break;
+		}else if (tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "F"){
+			result = "chegou ao final";
+			alert("chegou ao final");
+			break;
+		}else{
+			result = "esta numa casa possivel";
+			alert("esta numa casa possivel");
+		
+		}
+	
+			
+			
+			
+		}
+		else if ( path[i]=== "direita"){
+			finalCoordenates[0] += 1; 
+			
+			
+		if(tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "X"){
+			result = "bateu na parede";
+			alert("bateu na parede");
+		
+			break;
+		}else if (tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "F"){
+			result = "chegou ao final";
+			alert("chegou ao final");
+			break;
+		}else{
+			result = "esta numa casa possivel";
+			alert("esta numa casa possivel");
+		
+		}
+	
+			
+			
+		}
+		else if(path[i] === "esquerda"){
+			finalCoordenates[0] -= 1; 
+			
+		if(tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "X"){
+			result = "bateu na parede";
+			alert("bateu na parede");
+		
+			break;
+		}else if (tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "F"){
+			result = "chegou ao final";
+			alert("chegou ao final");
+			break;
+		}else{
+			result = "esta numa casa possivel";
+			alert("esta numa casa possivel");
+		
+		}
+	
+			
+			
+			
+		}
+		else if (path[i] === "baixo"){
+			finalCoordenates[1] -= 1;
+			
+		if(tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "X"){
+			result = "bateu na parede";
+			alert("bateu na parede");
+		
+			break;
+		}else if (tabuleiro[finalCoordenates[0]][finalCoordenates[1]] === "F"){
+			result = "chegou ao final";
+			alert("chegou ao final");
+			break;
+		}else{
+			result = "esta numa casa possivel";
+			alert("esta numa casa possivel");
+		
+		}
+	
+		}else{
+		
+		}
+	}
+	
+	
+
+	
+	
+	return result;
+  
+  }
+  
+ 
+  
+  
+  
+  function getStartCoordenates(tabuleiro){
+	var coordenadas = [];
+	for(var i = 0;i < tabuleiro[0].length;i++){
+		for(var j = 0;j < tabuleiro[0][i].length;j++){
+			
+			if(tabuleiro[0][i][j] == "S"){
+				coordenadas = [i,j];
+				console.log(i);
+				console.log(j);
+			}
+		}
+	}
+	return coordenadas;
+  }
 
 
   function drawCodes(topcodes) {
