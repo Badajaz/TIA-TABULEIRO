@@ -101,11 +101,52 @@
 	
 	
 	
-	document.getElementById("demo").innerHTML = tab[0] ;
+	showTabuleiro(tab[0]) ;
 	
 	
  	
 });
+
+
+
+
+function showTabuleiro(tabuleiro){
+      str = " ";
+	  tamanhoCaminho = 0;
+      for(i = tabuleiro.length-1;i >= 0 ;i--){
+        str+=i+"|"+tabuleiro[i]+"<br>";
+		if(tamanhoCaminho < tabuleiro[i].length){
+			tamanhoCaminho = tabuleiro[i].length;
+		}
+		
+		
+      }
+	  str+="&nbsp";
+	  var j;
+	  var bottomNumbers="";
+	  for(j = 0;j < tamanhoCaminho;j++){
+		
+		str+="&nbsp;&nbsp;"+"_";
+		bottomNumbers+="&nbsp;&nbsp;"+j;
+		
+	  }
+	  str+="<br>";
+	  str+="&nbsp";
+	  str+=bottomNumbers;
+	  
+      var res = str.replace("undefined", "");
+      document.getElementById("demo").innerHTML = res;
+
+    }
+
+
+
+
+
+
+
+
+
 
 
   function getPathValues(){
