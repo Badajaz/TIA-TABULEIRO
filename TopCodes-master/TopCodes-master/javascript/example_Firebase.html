@@ -5,6 +5,50 @@
 </head>
 
 <body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDSxgb9P6VlJaij21LpjDd8IN5RVzvcKUY",
+    authDomain: "tiafinal.firebaseapp.com",
+    databaseURL: "https://tiafinal.firebaseio.com",
+    //projectId: "tiafinal",
+    storageBucket: "",
+   // messagingSenderId: "1083181596620",
+    //appId: "1:1083181596620:web:626a010524aab304"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+	//var fire = document.getElementById('fb');
+	console.log("root");
+	var rootRef = firebase.database().ref("tiafinal");
+	console.log("url");
+	var urlRef = rootRef.child("tabuleiro");
+	console.log(urlRef);
+	console.log("passei");
+	
+	rootRef.on("value", function(snapshot) {
+ snapshot.forEach(function(childSnapshot) {
+  var childData = childSnapshot.val();
+  var id=childData.id;
+  console.log("id"+" "+id);
+ });
+});
+
+
+	/*
+	var dbRef = firebase.database().ref().child('tiafinal/tabuleiro');
+	console.log(dbRef);
+	dbRef.on('value', snap => fire.innerText = snap.val());
+	*/
+</script>
+
   <canvas id="video-canvas" width="1200" height="500" style="background: #ddd;"></canvas>
   <br/>
   <button id="camera-button" onclick="TopCodes.startStopVideoScan('video-canvas')">Start / Stop</button>
@@ -16,6 +60,8 @@
   
   <p id="teste"></p>
   
+  <p id="fb"></p>
+  
 <form>
  path:<br>
   <input id = "path" type="text" name="firstname" width= "500">
@@ -26,6 +72,8 @@
 
  
   <script>
+  
+
 
   TopCodes.setVideoFrameCallback("video-canvas", function(jsonString) {
     var json = JSON.parse(jsonString);
@@ -59,7 +107,6 @@
 						  
 		var startCoordenates = getStartCoordenates(tabuleiro);
 		
-		ola();
 		
 		document.getElementById("teste").innerHTML = showFinalResult(getPathValues(),startCoordenates,tabuleiro);
 		
@@ -105,6 +152,20 @@
 	
 	
 	showTabuleiro(tab[0]) ;
+	
+	var firebaseRef = new Firebase('http://INSTANCE.firebaseio.com');
+	firebaseRef.child('.info/connected').on('value', function(connectedSnap) {
+	if (connectedSnap.val() === true) {
+		/* we're connected! */
+		document.getElementById("firebase").innerHTML = "connect";
+
+	} else {
+    /* we're disconnected! */
+		document.getElementById("firebase").innerHTML =  "not connect";
+
+	}
+});
+	
 	
 	
  	
