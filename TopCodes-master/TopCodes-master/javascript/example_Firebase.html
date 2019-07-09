@@ -83,14 +83,19 @@
 		var tabuleiro = [];
 		
 			
-		if(item.code == 157 ){
+		if(item.code == 107){
 			
 			tabuleiro =  [["X", "S", "X" ],
 						  ["X", "O", "X" ],
-						  ["X", "O", "X" ],
-						  ["X", "O", "X", "X", "X", "X", "X", "X"],
-						  ["X", "O", "O", "O", "O", "O", "O", "X"],
+						  ["X", "O", "X", "X", "X", "X"],
+						  ["X", "O", "X", "O", "O", "O", "X", "X"],
+						  ["X", "O", "O", "O", "X", "O", "O", "X"],
 						  ["X", "X", "X", "X", "X", "X", "F", "X"]];
+						  
+		
+		var startCoordenates = getStartCoordenates(tabuleiro);
+		
+		document.getElementById("teste").innerHTML = showFinalResult(getPathValues(),startCoordenates,tabuleiro);
 		}
 		 
 		 if(item.code == 31 ){
